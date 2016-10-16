@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		B663C6521DB340DE0034A884 /* NJOutputMouseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B663C6511DB340DE0034A884 /* NJOutputMouseUtils.m */; };
 		D594BF000FAE7397007A85F2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D594BEFF0FAE7397007A85F2 /* IOKit.framework */; };
 		EE1F3CEA16EF4182008C6426 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE1F3CE816EF4182008C6426 /* Localizable.strings */; };
 		EE35A6E417BBCC9500413995 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE35A6E317BBCC9500413995 /* CoreVideo.framework */; };
@@ -73,6 +74,8 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Enjoyable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enjoyable.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B663C6511DB340DE0034A884 /* NJOutputMouseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NJOutputMouseUtils.m; path = Classes/NJOutputMouseUtils.m; sourceTree = "<group>"; };
+		B663C6531DB340F70034A884 /* NJOutputMouseUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NJOutputMouseUtils.h; path = Classes/NJOutputMouseUtils.h; sourceTree = "<group>"; };
 		D594BEFF0FAE7397007A85F2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		EE1F3CE916EF4182008C6426 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EE35A6E317BBCC9500413995 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -323,6 +326,8 @@
 				EEF17D5916E8E2EF00D7DC4D /* NJOutputMouseMove.m */,
 				EEF17D5A16E8E2EF00D7DC4D /* NJOutputMouseScroll.h */,
 				EEF17D5B16E8E2EF00D7DC4D /* NJOutputMouseScroll.m */,
+				B663C6531DB340F70034A884 /* NJOutputMouseUtils.h */,
+				B663C6511DB340DE0034A884 /* NJOutputMouseUtils.m */,
 			);
 			name = Output;
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 				EEF17D3816E8E2E100D7DC4D /* NSView+FirstResponder.m in Sources */,
 				EEF17D5C16E8E2EF00D7DC4D /* EnjoyableApplicationDelegate.m in Sources */,
 				EEF17D5D16E8E2EF00D7DC4D /* NJDevice.m in Sources */,
+				B663C6521DB340DE0034A884 /* NJOutputMouseUtils.m in Sources */,
 				EEF17D5E16E8E2EF00D7DC4D /* NJInputController.m in Sources */,
 				EEF17D5F16E8E2EF00D7DC4D /* NJInput.m in Sources */,
 				EEF17D6016E8E2EF00D7DC4D /* NJInputAnalog.m in Sources */,

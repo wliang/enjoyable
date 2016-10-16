@@ -8,6 +8,7 @@
 #import "NJOutputMouseMove.h"
 
 #import "NJInputController.h"
+#import "NJOutputMouseUtils.h"
 
 @implementation NJOutputMouseMove
 
@@ -41,8 +42,6 @@
     if (self.magnitude < 0.05)
         return NO; // dead zone
     
-    CGSize size = NSScreen.mainScreen.frame.size;
-    
     CGFloat dx = 0, dy = 0;
     switch (_axis) {
         case 0:
@@ -58,14 +57,27 @@
             dy = self.magnitude * _speed;
             break;
     }
-    NSPoint mouseLoc = ic.mouseLoc;
-    mouseLoc.x = CLAMP(mouseLoc.x + dx, 0, size.width - 1);
-    mouseLoc.y = CLAMP(mouseLoc.y - dy, 0, size.height - 1);
-    ic.mouseLoc = mouseLoc;
     
-    CGEventRef move = CGEventCreateMouseEvent(NULL, kCGEventMouseMoved,
-                                              CGPointMake(mouseLoc.x, size.height - mouseLoc.y),
+    NSPoint mouseLoc = ic.mouseLoc;
+    NSScreen *currentScreen = getScreenContainingPoint(mouseLoc);
+    if (!currentScreen) {
+        currentScreen = [NSScreen mainScreen];
+    }
+    NSRect currentScreenFrame = currentScreen.frame;
+    
+    NSPoint newMouseLoc = NSMakePoint(mouseLoc.x + dx, mouseLoc.y - dy);
+    if (getScreenContainingPoint(newMouseLoc) == nil) {
+        // If new mouse position is outside of screen boundary, bound it to the current screen
+        newMouseLoc.x = CLAMP(newMouseLoc.x, CGRectGetMinX(currentScreenFrame), CGRectGetMaxX(currentScreenFrame) - 1);
+        newMouseLoc.y = CLAMP(newMouseLoc.y, CGRectGetMinY(currentScreenFrame), CGRectGetMaxY(currentScreenFrame) - 1);
+    }
+    ic.mouseLoc = newMouseLoc;
+    
+    CGEventRef move = CGEventCreateMouseEvent(NULL,
+                                              kCGEventMouseMoved,
+                                              CGPointMake(newMouseLoc.x, CGRectGetMaxY(currentScreenFrame) - newMouseLoc.y),
                                               0);
+    
     CGEventSetIntegerValueField(move, kCGMouseEventDeltaX, (int)dx);
     CGEventSetIntegerValueField(move, kCGMouseEventDeltaY, (int)dy);
     CGEventPost(kCGHIDEventTap, move);
